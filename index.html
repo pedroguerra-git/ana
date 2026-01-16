@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clínica Premium — Emagrecimento & Saúde</title>
+  <meta name="description" content="Emagrecimento com ciência, exclusividade e acompanhamento personalizado. Agende um atendimento." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --bg-soft:#f4f5f7;
+      --text:#0c0d10;
+      --muted:rgba(12,13,16,.70);
+      --line:rgba(12,13,16,.10);
+
+      --accent:#5b2bff;     /* roxo */
+      --accent-2:#bfe6d6;   /* verde pastel */
+      --dark:#0b0c10;
+
+      --shadow:0 10px 30px rgba(0,0,0,.10);
+      --radius:18px;
+      --radius-lg:28px;
+      --container:1180px;
+
+      --h1:clamp(2.2rem,4.2vw,4.4rem);
+      --h2:clamp(1.3rem,2.2vw,2.1rem);
+      --p:1.02rem;
+      --ls-wide:.18em;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    button{font-family:inherit}
+
+    .container{width:min(var(--container),calc(100% - 48px));margin:0 auto}
+    .section{padding:92px 0}
+    .section--soft{background:var(--bg-soft)}
+
+    /* NAV */
+    .nav{
+      position:fixed;inset:0 0 auto 0;z-index:50;
+      padding:18px 0;
+      transition:background .25s ease,box-shadow .25s ease,padding .25s ease;
+      background:linear-gradient(to bottom,rgba(0,0,0,.52),rgba(0,0,0,0));
+    }
+    .nav.is-solid{
+      background:rgba(255,255,255,.86);
+      backdrop-filter:blur(12px);
+      box-shadow:0 1px 0 var(--line);
+      padding:12px 0;
+    }
+    .nav__row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+
+    .brand{display:flex;align-items:center;gap:10px;color:#fff;transition:color .25s ease}
+    .nav.is-solid .brand{color:var(--text)}
+
+    .brand__mark{
+      width:36px;height:36px;border-radius:12px;
+      background:
+        radial-gradient(circle at 30% 30%,rgba(255,255,255,.55),rgba(255,255,255,0)),
+        linear-gradient(135deg,rgba(91,43,255,.92),rgba(91,43,255,.35));
+      box-shadow:0 10px 30px rgba(91,43,255,.25);
+      position:relative;overflow:hidden;
+    }
+    .brand__mark::after{
+      content:"";position:absolute;inset:-40% -40%;
+      background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);
+      transform:rotate(12deg);
+      animation:sheen 3.6s ease-in-out infinite;
+      opacity:.8;
+    }
+    @keyframes sheen{
+      0%,65%{transform:translateX(-30%) rotate(12deg);opacity:0}
+      75%{opacity:.9}
+      100%{transform:translateX(30%) rotate(12deg);opacity:0}
+    }
+
+    .brand__name{font-weight:600;letter-spacing:.10em;text-transform:uppercase;font-size:.92rem;line-height:1}
+    .brand__sub{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;opacity:.78;margin-top:4px}
+
+    .nav__links{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.92);transition:color .25s ease}
+    .nav.is-solid .nav__links{color:rgba(12,13,16,.78)}
+    .nav__links a{
+      font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+      opacity:.9;position:relative;padding:10px 0;
+    }
+    .nav__links a::after{
+      content:"";position:absolute;left:0;right:0;bottom:6px;height:1px;background:currentColor;
+      transform:scaleX(0);transform-origin:left;transition:transform .25s ease;opacity:.35;
+    }
+    .nav__links a:hover::after{transform:scaleX(1)}
+
+    .nav__cta{display:flex;align-items:center;gap:10px}
+
+    /* Buttons */
+    .btn{
+      border:0;border-radius:999px;padding:12px 18px;
+      font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+      cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,background .2s ease,color .2s ease,border-color .2s ease;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;user-select:none;white-space:nowrap;
+    }
+    .btn:active{transform:translateY(1px)}
+
+    .btn--primary{
+      background:rgba(255,255,255,.94);color:var(--text);
+      box-shadow:0 12px 30px rgba(0,0,0,.18);
+    }
+    .nav.is-solid .btn--primary{background:var(--text);color:#fff;box-shadow:0 12px 26px rgba(12,13,16,.18)}
+    .btn--primary:hover{transform:translateY(-1px);box-shadow:0 18px 42px rgba(0,0,0,.20)}
+
+    .btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+    .nav.is-solid .btn--ghost{color:var(--text);border-color:rgba(12,13,16,.18)}
+    .btn--ghost:hover{background:rgba(255,255,255,.12)}
+    .nav.is-solid .btn--ghost:hover{background:rgba(12,13,16,.06)}
+
+    .btn--secondary{background:var(--accent-2);color:var(--text);box-shadow:0 12px 30px rgba(191,230,214,.45)}
+    .btn--secondary:hover{transform:translateY(-1px);box-shadow:0 16px 40px rgba(191,230,214,.55)}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:stretch;overflow:hidden;background:#0b0c10}
+    .hero__media{position:absolute;inset:0;z-index:0}
+    .hero__media img,
+    .hero__media video{
+      width:100%;height:100%;object-fit:cover;
+      filter:saturate(.92) contrast(1.05) brightness(.78);
+      transform:scale(1.03);
+      will-change:transform;
+    }
+    .hero__media img{animation:kenburns 16s ease-in-out infinite alternate}
+    @keyframes kenburns{from{transform:scale(1.03) translateY(0)}to{transform:scale(1.09) translateY(-1.2%)} }
+
+    .hero__overlay{
+      position:absolute;inset:0;z-index:1;
+      background:
+        radial-gradient(70% 60% at 20% 30%,rgba(91,43,255,.24),rgba(0,0,0,0) 60%),
+        radial-gradient(60% 70% at 80% 20%,rgba(191,230,214,.14),rgba(0,0,0,0) 55%),
+        linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.62));
+    }
+    .hero__content{position:relative;z-index:2;width:100%;display:flex;align-items:center;padding-top:92px;padding-bottom:56px}
+    .hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
+
+    .kicker{color:rgba(255,255,255,.82);font-size:.80rem;letter-spacing:var(--ls-wide);text-transform:uppercase;margin:0 0 12px 0}
+    .hero__title{margin:0;color:#fff;font-size:var(--h1);line-height:1.02;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+    .hero__title span{display:inline-block;color:rgba(255,255,255,.92)}
+    .hero__year{margin-top:14px;display:flex;align-items:baseline;gap:14px;color:rgba(255,255,255,.78);letter-spacing:.20em;text-transform:uppercase;font-size:.86rem}
+    .hero__year b{color:rgba(255,255,255,.95);font-weight:600;letter-spacing:.22em}
+    .hero__desc{margin:22px 0 0;color:rgba(255,255,255,.78);font-size:1.05rem;line-height:1.7;max-width:56ch;font-weight:300}
+    .hero__actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+
+    .hero__card{
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius-lg);padding:22px;backdrop-filter:blur(10px);
+      box-shadow:0 30px 80px rgba(0,0,0,.35);
+    }
+    .hero__card h3{margin:0 0 10px;color:rgba(255,255,255,.92);font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+    .hero__card p{margin:0;color:rgba(255,255,255,.72);font-size:.95rem;line-height:1.65;font-weight:300}
+    .hero__stats{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .stat{border-radius:16px;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.10);padding:12px 14px}
+    .stat b{display:block;color:rgba(255,255,255,.94);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.84rem}
+    .stat span{display:block;margin-top:6px;color:rgba(255,255,255,.68);font-size:.82rem;letter-spacing:.06em;line-height:1.3}
+
+    .scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.72);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:10px;opacity:.9}
+    .scroll-hint .dot{width:10px;height:10px;border-radius:99px;background:rgba(255,255,255,.45);position:relative}
+    .scroll-hint .dot::after{content:"";position:absolute;inset:-8px;border-radius:999px;border:1px solid rgba(255,255,255,.22);animation:pulse 1.6s ease-in-out infinite}
+    @keyframes pulse{0%{transform:scale(.9);opacity:.3}60%{transform:scale(1.2);opacity:.2}100%{transform:scale(1.35);opacity:0}}
+
+    /* Headings */
+    .heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:40px;border-bottom:1px solid var(--line);padding-bottom:18px}
+    .heading__title{margin:0;font-size:var(--h2);letter-spacing:var(--ls-wide);text-transform:uppercase;font-weight:600;color:var(--text)}
+    .heading__subtitle{margin:0;max-width:60ch;color:var(--muted);font-weight:300;line-height:1.7;font-size:1rem}
+
+    /* 2-col blocks */
+    .alt{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;margin:34px 0;padding:26px 0;border-bottom:1px solid var(--line)}
+    .alt:last-child{border-bottom:0}
+    .alt--reverse .alt__media{order:2}
+    .alt--reverse .alt__content{order:1}
+
+    .alt__media{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06);background:#ddd;min-height:360px;position:relative}
+    .alt__media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01);transition:transform .6s ease}
+    .alt__media:hover img{transform:scale(1.06)}
+
+    .alt__badge{position:absolute;left:18px;top:18px;padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.06);letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;font-weight:600;display:inline-flex;align-items:center;gap:10px}
+    .alt__badge i{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 4px rgba(91,43,255,.16)}
+
+    .alt__content h3{margin:0 0 12px;letter-spacing:.18em;text-transform:uppercase;font-size:1.05rem;font-weight:700;color:var(--text)}
+    .alt__content p{margin:0 0 18px;color:var(--muted);line-height:1.8;font-weight:300;font-size:var(--p)}
+
+    .alt__points{display:grid;gap:10px;margin-top:10px}
+    .point{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:16px;background:rgba(91,43,255,.04);border:1px solid rgba(91,43,255,.12)}
+    .point .tick{width:18px;height:18px;border-radius:6px;background:rgba(91,43,255,.14);border:1px solid rgba(91,43,255,.22);display:flex;align-items:center;justify-content:center;margin-top:2px;flex:0 0 auto}
+    .point .tick::before{content:"";width:8px;height:8px;border-radius:3px;background:var(--accent)}
+    .point b{display:block;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+    .point span{display:block;margin-top:4px;font-size:.92rem;color:var(--muted);line-height:1.5;font-weight:300}
+
+    /* Results */
+    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+    .result-card{background:#fff;border-radius:var(--radius-lg);border:1px solid rgba(0,0,0,.06);overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.08);transition:transform .18s ease,box-shadow .22s ease}
+    .result-card:hover{transform:translateY(-3px);box-shadow:0 18px 55px rgba(0,0,0,.10)}
+    .result-card__img{height:240px;overflow:hidden;background:#ddd}
+    .result-card__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.92);transform:scale(1.02);transition:transform .6s ease;display:block}
+    .result-card:hover .result-card__img img{transform:scale(1.07)}
+    .result-card__body{padding:18px 18px 20px}
+    .result-card__name{margin:0;letter-spacing:.18em;text-transform:uppercase;font-size:.90rem;font-weight:700}
+    .result-card__desc{margin:10px 0 14px;color:var(--muted);font-weight:300;line-height:1.6;font-size:.98rem}
+    .result-card__link{display:inline-flex;align-items:center;gap:10px;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;color:rgba(91,43,255,.92);font-weight:600}
+    .result-card__link .arrow{width:28px;height:28px;border-radius:999px;background:rgba(91,43,255,.10);display:flex;align-items:center;justify-content:center;border:1px solid rgba(91,43,255,.18);transition:transform .18s ease}
+    .result-card:hover .result-card__link .arrow{transform:translateX(2px)}
+
+    /* Slider */
+    .slider{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(0,0,0,.06);background:#fff;box-shadow:0 16px 52px rgba(0,0,0,.08)}
+    .slider__track{display:flex;transition:transform .5s cubic-bezier(.2,.7,.2,1);will-change:transform}
+    .slide{min-width:100%;padding:34px 34px 30px;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center}
+    .quote{margin:0;font-size:1.02rem;line-height:1.85;font-weight:300;color:rgba(12,13,16,.78)}
+    .quote strong{font-weight:600;color:rgba(12,13,16,.92)}
+    .meta{border-left:1px solid var(--line);padding-left:22px}
+    .stars{display:flex;gap:6px;margin-bottom:12px}
+    .star{width:16px;height:16px;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);background:rgba(91,43,255,.92);filter:drop-shadow(0 6px 10px rgba(91,43,255,.18))}
+    .meta__who{margin:0;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-size:.92rem}
+    .meta__src{margin:10px 0 0;color:var(--muted);font-weight:300;line-height:1.6;font-size:.95rem}
+    .slider__controls{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(244,245,247,.75);border-top:1px solid var(--line)}
+    .dots{display:flex;gap:8px;align-items:center}
+    .dotbtn{width:8px;height:8px;border-radius:999px;border:0;background:rgba(12,13,16,.22);cursor:pointer;transition:transform .18s ease,background .18s ease}
+    .dotbtn.is-active{background:rgba(91,43,255,.92);transform:scale(1.4)}
+    .slider__arrows{display:flex;gap:10px}
+    .iconbtn{width:40px;height:40px;border-radius:999px;border:1px solid rgba(12,13,16,.14);background:#fff;cursor:pointer;transition:transform .16s ease,background .2s ease;display:flex;align-items:center;justify-content:center}
+    .iconbtn:hover{transform:translateY(-1px);background:rgba(12,13,16,.03)}
+    .iconbtn:active{transform:translateY(1px)}
+
+    /* CTA band */
+    .cta{
+      position:relative;overflow:hidden;border-radius:var(--radius-lg);border:1px solid rgba(0,0,0,.06);
+      background:
+        radial-gradient(70% 60% at 30% 30%,rgba(91,43,255,.14),rgba(255,255,255,0) 60%),
+        radial-gradient(60% 70% at 80% 20%,rgba(191,230,214,.22),rgba(255,255,255,0) 55%),
+        linear-gradient(180deg,#ffffff,#fbfbfc);
+      box-shadow:0 18px 70px rgba(0,0,0,.08);
+      padding:44px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center;
+    }
+    .cta h3{margin:0 0 10px;letter-spacing:.18em;text-transform:uppercase;font-size:1.15rem;font-weight:700}
+    .cta p{margin:0;color:var(--muted);font-weight:300;line-height:1.75;max-width:62ch}
+    .cta .cta__actions{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+
+    /* Footer */
+    footer{background:var(--dark);color:rgba(255,255,255,.82);padding:56px 0 28px;border-top:1px solid rgba(255,255,255,.10)}
+    .footer__top{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.10)}
+    .footer__brand{display:flex;gap:14px;align-items:flex-start}
+    .footer__brand .brand__mark{width:44px;height:44px;border-radius:16px;box-shadow:0 18px 60px rgba(91,43,255,.22)}
+    .footer__brand h4{margin:0;font-size:.92rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.92)}
+    .footer__brand p{margin:10px 0 0;color:rgba(255,255,255,.68);font-weight:300;line-height:1.75;max-width:58ch;font-size:.95rem}
+    .footer__cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .footer__col h5{margin:0 0 12px;letter-spacing:.18em;text-transform:uppercase;font-size:.80rem;color:rgba(255,255,255,.86)}
+    .footer__col a,.footer__col span{display:block;color:rgba(255,255,255,.68);font-weight:300;line-height:1.9;font-size:.95rem}
+    .social{display:flex;gap:10px;margin-top:14px}
+    .social a{width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;transition:transform .16s ease,background .2s ease,border-color .2s ease}
+    .social a:hover{transform:translateY(-1px);background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.26)}
+    .footer__bottom{padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.55);font-size:.85rem}
+    .footer__bottom a{color:rgba(255,255,255,.65);margin-left:14px}
+
+    /* WhatsApp floating */
+    .whatsapp{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:999px;border:0;cursor:pointer;box-shadow:0 18px 50px rgba(0,0,0,.28);background:linear-gradient(135deg,#25D366,#1fb85a);display:flex;align-items:center;justify-content:center;transition:transform .18s ease,box-shadow .2s ease}
+    .whatsapp:hover{transform:translateY(-2px);box-shadow:0 22px 60px rgba(0,0,0,.30)}
+    .whatsapp svg{width:26px;height:26px;fill:#fff}
+
+    /* Fade-in */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero__grid{grid-template-columns:1fr}
+      .nav__links{display:none}
+      .alt{grid-template-columns:1fr}
+      .alt--reverse .alt__media{order:0}
+      .slide{grid-template-columns:1fr}
+      .meta{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:18px}
+      .cta{grid-template-columns:1fr;padding:34px 24px}
+      .cta .cta__actions{justify-content:flex-start}
+      .footer__top{grid-template-columns:1fr}
+    }
+    @media (max-width:760px){
+      .section{padding:72px 0}
+      .results-grid{grid-template-columns:1fr}
+      .hero__stats{grid-template-columns:1fr}
+      .alt__media{min-height:280px}
+      .heading{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container">
+      <div class="nav__row">
+        <a class="brand" href="#top" aria-label="Início">
+          <div class="brand__mark" aria-hidden="true"></div>
+          <div>
+            <span class="brand__name">CLÍNICA</span>
+            <span class="brand__sub">Ciência • Exclusividade</span>
+          </div>
+        </a>
+
+        <nav class="nav__links" aria-label="Seções">
+          <a href="#doutora">A Doutora</a>
+          <a href="#metodo">Método</a>
+          <a href="#diferenciais">Diferenciais</a>
+          <a href="#resultados">Resultados</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <div class="nav__cta">
+          <a class="btn btn--ghost" href="#contato">Fale com a equipe</a>
+          <a class="btn btn--primary" href="#contato">Agende um atendimento</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="hero__media" aria-hidden="true">
+      <!-- HERO: imagem da doutora (substitua aqui se quiser vídeo local em assets/hero.mp4) -->
+      <picture>
+        <source srcset="assets/hero-1920x700.webp 1920w, assets/hero-2560x900.webp 2560w" type="image/webp">
+        <source srcset="assets/hero-1920x700.jpg 1920w, assets/hero-2560x900.jpg 2560w" type="image/jpeg">
+        <img src="assets/hero-2560x900.jpg" alt="" loading="eager" fetchpriority="high">
+      </picture>
+    </div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <div class="container">
+        <div class="hero__grid">
+          <div>
+            <p class="kicker">Emagrecimento médico • Metabolismo • Saúde de longo prazo</p>
+            <h1 class="hero__title"><span>Emagrecimento</span> com ciência</h1>
+
+            <div class="hero__year">
+              <b>2026</b>
+              <span>Exclusividade, precisão e acompanhamento</span>
+            </div>
+
+            <p class="hero__desc">
+              Protocolos personalizados para emagrecimento e saúde metabólica — com avaliação clínica, nutrição estruturada e monitoramento de dados.
+              Um padrão premium de cuidado, sem atalhos.
+            </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#contato">Agende um atendimento</a>
+              <a class="btn btn--secondary" href="#doutora">Conheça a doutora</a>
+            </div>
+          </div>
+
+          <aside class="hero__card reveal">
+            <h3>Como trabalhamos</h3>
+            <p>
+              Diagnóstico completo, plano sob medida e ajustes contínuos. Acompanhamento próximo para manter evolução e segurança.
+            </p>
+
+            <div class="hero__stats">
+              <div class="stat"><b>Protocolo único</b><span>Feito para seu corpo e rotina</span></div>
+              <div class="stat"><b>Monitoramento</b><span>Métricas e ajustes semanais</span></div>
+              <div class="stat"><b>Nutrição 1:1</b><span>Plano executável e elegante</span></div>
+              <div class="stat"><b>Foco em saúde</b><span>Resultado sustentável</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="dot"></span>
+      <span>Role para ver mais</span>
+    </div>
+  </main>
+
+  <!-- A DOUTORA -->
+  <section id="doutora" class="section">
+    <div class="container">
+      <div class="heading reveal">
+        <h2 class="heading__title">A Doutora</h2>
+        <p class="heading__subtitle">
+          Atendimento com postura clínica e linguagem clara. O objetivo é resultado com segurança, previsibilidade e método.
+        </p>
+      </div>
+
+      <div class="alt reveal">
+        <div class="alt__media">
+          <span class="alt__badge"><i></i> Médica</span>
+          <picture>
+            <source srcset="assets/doctor-1536x1024.webp" type="image/webp">
+            <source srcset="assets/doctor-1536x1024.jpg" type="image/jpeg">
+            <img src="assets/doctor-1536x1024.jpg" alt="Foto institucional da doutora" loading="lazy">
+          </picture>
+        </div>
+        <div class="alt__content">
+          <h3>Medicina baseada em evidências</h3>
+          <p>
+            Um acompanhamento pensado para quem quer emagrecer com responsabilidade: avaliação detalhada, metas realistas, ajuste de estratégia e suporte contínuo.
+            Aqui, cada etapa tem motivo e métrica.
+          </p>
+
+          <div class="alt__points">
+            <div class="point">
+              <div class="tick" aria-hidden="true"></div>
+              <div>
+                <b>Foco metabólico</b>
+                <span>Saúde hormonal, sono, saciedade e composição corporal.</span>
+              </div>
+            </div>
+            <div class="point">
+              <div class="tick" aria-hidden="true"></div>
+              <div>
+                <b>Plano executável</b>
+                <span>Rotina simples, sustentável e compatível com vida real.</span>
+              </div>
+            </div>
+            <div class="point">
+              <div class="tick" aria-hidden="true"></div>
+              <div>
+                <b>Acompanhamento premium</b>
+                <span>Contato, revisões e ajustes com padrão alto de cuidado.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section id="metodo" class="section section--soft">
+    <div class="container">
+      <div class="heading reveal">
+        <h2 class="heading__title">Método</h2>
+        <p class="heading__subtitle">
+          Uma experiência de alto padrão: diagnóstico, plano e acompanhamento. Minimalismo no design, rigor na execução.
+        </p>
+      </div>
+
+      <div class="alt reveal">
+        <div class="alt__media">
+          <span class="alt__badge"><i></i> Avaliação clínica</span>
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1600&q=80" alt="Avaliação clínica em ambiente premium" loading="lazy" />
+        </div>
+        <div class="alt__content">
+          <h3>Diagnóstico completo e direcionado</h3>
+          <p>
+            Começamos entendendo sua história, seus exames, seu metabolismo e sua rotina. Isso permite um plano que respeita o seu contexto — com decisões guiadas por dados.
+          </p>
+          <div class="alt__points">
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Protocolo por fases</b><span>Estratégias ajustadas conforme seu progresso.</span></div></div>
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Ritual de acompanhamento</b><span>Check-ins, revisão de métricas e ajustes rápidos.</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section id="diferenciais" class="section">
+    <div class="container">
+      <div class="heading reveal">
+        <h2 class="heading__title">Diferenciais</h2>
+        <p class="heading__subtitle">
+          Ciência aplicada à prática: personalização, tecnologia e acompanhamento para acelerar resultados mantendo saúde e previsibilidade.
+        </p>
+      </div>
+
+      <div class="alt reveal">
+        <div class="alt__media">
+          <span class="alt__badge"><i></i> Teste genético</span>
+          <img src="https://images.unsplash.com/photo-1581092919540-1c1f1f0b9b1d?auto=format&fit=crop&w=1600&q=80" alt="Análise laboratorial e genética" loading="lazy" />
+        </div>
+        <div class="alt__content">
+          <h3>Teste genético e estratégia metabólica</h3>
+          <p>
+            Identifique predisposições e padrões relevantes para resposta alimentar, treino e sono. Usamos os dados para reduzir tentativa e erro e orientar decisões clínicas.
+          </p>
+          <div class="alt__points">
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Direcionamento</b><span>Decisões com base em perfil e evidência.</span></div></div>
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Personalização</b><span>Ajustes finos para rotina e objetivos.</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alt alt--reverse reveal">
+        <div class="alt__media">
+          <span class="alt__badge"><i></i> Suplementos</span>
+          <img src="https://images.unsplash.com/photo-1615486364521-8d59c3f2a1d7?auto=format&fit=crop&w=1600&q=80" alt="Suplementos e frascos minimalistas" loading="lazy" />
+        </div>
+        <div class="alt__content">
+          <h3>Suplementação sob medida</h3>
+          <p>
+            Fórmulas e rotinas escolhidas com critério para apoiar energia, saciedade, composição corporal e recuperação — sempre com dosagem adequada e objetivo claro.
+          </p>
+          <div class="alt__points">
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Critério clínico</b><span>Seleção baseada em necessidade e exames.</span></div></div>
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Praticidade</b><span>Rotina simples, fácil de manter por meses.</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alt reveal">
+        <div class="alt__media">
+          <span class="alt__badge"><i></i> Balança inteligente</span>
+          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600&q=80" alt="Dispositivo inteligente e métricas" loading="lazy" />
+        </div>
+        <div class="alt__content">
+          <h3>Métricas objetivas, ajustes rápidos</h3>
+          <p>
+            Peso isolado não conta a história inteira. Monitoramos tendência e sinais do corpo para ajustar o protocolo sem achismo — com previsibilidade e calma.
+          </p>
+          <div class="alt__points">
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Composição corporal</b><span>Foco em evolução real, não só no número.</span></div></div>
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Previsibilidade</b><span>Decisões guiadas por tendência, não por ansiedade.</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alt alt--reverse reveal">
+        <div class="alt__media">
+          <span class="alt__badge"><i></i> Nutrição</span>
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1600&q=80" alt="Comida saudável em estética premium" loading="lazy" />
+        </div>
+        <div class="alt__content">
+          <h3>Acompanhamento nutricional premium</h3>
+          <p>
+            Plano alimentar com escolhas elegantes e executáveis. O objetivo é manter performance e bem-estar enquanto o corpo responde com clareza, sem restrições desnecessárias.
+          </p>
+          <div class="alt__points">
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Personalização</b><span>Preferências, rotina e objetivo no centro.</span></div></div>
+            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Acompanhamento</b><span>Ajustes frequentes para manter evolução.</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section id="resultados" class="section section--soft">
+    <div class="container">
+      <div class="heading reveal">
+        <h2 class="heading__title">Resultados / Clientes reais</h2>
+        <p class="heading__subtitle">
+          Histórias reais, com privacidade e respeito. A estética em preto-e-branco reforça o foco no que importa: consistência e transformação.
+        </p>
+      </div>
+
+      <div class="results-grid">
+        <article class="result-card reveal">
+          <div class="result-card__img">
+            <img src="https://images.unsplash.com/photo-1520975958225-ffcf83c6b201?auto=format&fit=crop&w=1400&q=80" alt="Cliente em preto-e-branco" loading="lazy" />
+          </div>
+          <div class="result-card__body">
+            <h3 class="result-card__name">Mariana S.</h3>
+            <p class="result-card__desc">“Eu perdi 25 kg.”</p>
+            <a class="result-card__link" href="#" aria-label="Ver o caso de Mariana S.">Ver o caso <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="result-card reveal">
+          <div class="result-card__img">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=80" alt="Cliente em preto-e-branco" loading="lazy" />
+          </div>
+          <div class="result-card__body">
+            <h3 class="result-card__name">Ricardo A.</h3>
+            <p class="result-card__desc">“Eu reduzi 12% de gordura.”</p>
+            <a class="result-card__link" href="#" aria-label="Ver o caso de Ricardo A.">Ver o caso <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="result-card reveal">
+          <div class="result-card__img">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=80" alt="Cliente em preto-e-branco" loading="lazy" />
+          </div>
+          <div class="result-card__body">
+            <h3 class="result-card__name">Camila R.</h3>
+            <p class="result-card__desc">“Eu emagreci e voltei a dormir bem.”</p>
+            <a class="result-card__link" href="#" aria-label="Ver o caso de Camila R.">Ver o caso <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" class="section">
+    <div class="container">
+      <div class="heading reveal">
+        <h2 class="heading__title">Depoimentos</h2>
+        <p class="heading__subtitle">Experiência premium e acompanhamento próximo. Um padrão de cuidado que você percebe nos detalhes.</p>
+      </div>
+
+      <div class="slider reveal" aria-roledescription="carousel" aria-label="Depoimentos">
+        <div class="slider__track" id="track">
+          <div class="slide" role="group" aria-label="Depoimento 1 de 3">
+            <p class="quote">“Eu já tinha tentado de tudo. Aqui, pela primeira vez, senti <strong>um plano realmente meu</strong>: simples de executar, com ajustes rápidos e sem ansiedade.”</p>
+            <div class="meta">
+              <div class="stars" aria-label="5 de 5 estrelas"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+              <p class="meta__who">Cliente • Programa Premium</p>
+              <p class="meta__src">“Atendimento impecável e acompanhamento de verdade.”</p>
+            </div>
+          </div>
+
+          <div class="slide" role="group" aria-label="Depoimento 2 de 3">
+            <p class="quote">“A diferença está no monitoramento. Em vez de esperar um mês para ajustar, a equipe acompanha as métricas e <strong>corrige a rota</strong>.”</p>
+            <div class="meta">
+              <div class="stars" aria-label="5 de 5 estrelas"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+              <p class="meta__who">Cliente • Acompanhamento 1:1</p>
+              <p class="meta__src">Citação: “Sofisticação, ciência e proximidade.”</p>
+            </div>
+          </div>
+
+          <div class="slide" role="group" aria-label="Depoimento 3 de 3">
+            <p class="quote">“O plano foi desenhado para minha rotina real. Sem exagero, sem promessa fácil — apenas método e consistência. Eu ganhei saúde e controle.”</p>
+            <div class="meta">
+              <div class="stars" aria-label="5 de 5 estrelas"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+              <p class="meta__who">Cliente • Reeducação e Performance</p>
+              <p class="meta__src">Citação: “Elegante, objetivo e altamente eficaz.”</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider__controls" aria-label="Controles do carrossel">
+          <div class="dots" id="dots" aria-label="Navegação por pontos">
+            <button class="dotbtn is-active" aria-label="Ir para depoimento 1"></button>
+            <button class="dotbtn" aria-label="Ir para depoimento 2"></button>
+            <button class="dotbtn" aria-label="Ir para depoimento 3"></button>
+          </div>
+          <div class="slider__arrows">
+            <button class="iconbtn" id="prev" aria-label="Anterior">←</button>
+            <button class="iconbtn" id="next" aria-label="Próximo">→</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contato" class="section section--soft">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h3>Agende um atendimento</h3>
+          <p>
+            Uma conversa rápida para entender seu objetivo e indicar o melhor caminho.
+            Se fizer sentido, seguimos para avaliação e protocolo personalizado.
+          </p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="#" onclick="openScheduling(event)">Agendar agora</a>
+          <a class="btn btn--secondary" href="#" onclick="openWhatsApp(event)">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="brand__mark" aria-hidden="true"></div>
+          <div>
+            <h4>CLÍNICA</h4>
+            <p>
+              Emagrecimento e saúde com ciência, estética premium e acompanhamento personalizado.
+              Protocolos sob medida, com clareza e consistência.
+            </p>
+            <div class="social" aria-label="Redes sociais">
+              <a href="#" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.2-.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.6 31.6 0 0 0 2 12a31.6 31.6 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 22 12a31.6 31.6 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+              </a>
+              <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5A1.5 1.5 0 1 1 6.5 3a1.5 1.5 0 0 1 0 3.5zM5 8h3v13H5V8zm5 0h2.9v1.8h.04c.4-.8 1.4-2 3.1-2 3.3 0 3.9 2.2 3.9 5v8.2h-3v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.8-2.8 3.8V21h-3V8z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h5>Contato</h5>
+            <span>Endereço: Rua Exemplo, 123 • Bairro • Cidade/UF</span>
+            <a href="tel:+550000000000">Telefone: (00) 0000-0000</a>
+            <a href="mailto:contato@clinica.com">E-mail: contato@clinica.com</a>
+          </div>
+          <div class="footer__col">
+            <h5>Legal</h5>
+            <a href="#">Termos de uso</a>
+            <a href="#">Política de privacidade</a>
+            <a href="#top">Voltar ao topo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> Clínica. Todos os direitos reservados.</span>
+        <span>
+          <a href="#">Termos</a>
+          <a href="#">Privacidade</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating -->
+  <button class="whatsapp" aria-label="Contato rápido via WhatsApp" onclick="openWhatsApp(event)">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.73.45 3.42 1.3 4.92L2 22l5.31-1.39a9.86 9.86 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.75 14.2c-.24.68-1.4 1.31-1.93 1.38-.5.07-1.13.1-1.82-.12-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.14-4.94-4.33-.14-.2-1.17-1.56-1.17-2.98 0-1.42.75-2.12 1.02-2.41.27-.29.59-.36.79-.36h.57c.18 0 .43-.07.67.51.24.59.81 2.04.88 2.19.07.15.12.33.02.53-.1.2-.15.33-.3.51-.15.18-.31.4-.44.54-.15.15-.31.31-.13.62.18.31.8 1.32 1.71 2.13 1.18 1.05 2.17 1.38 2.48 1.53.31.15.49.13.67-.08.18-.2.77-.9.98-1.21.2-.31.41-.26.67-.15.27.1 1.69.8 1.98.95.29.15.48.22.55.34.07.12.07.69-.17 1.37z"/>
+    </svg>
+  </button>
+
+  <script>
+    // NAV transparency on scroll
+    const nav = document.getElementById('nav');
+    const onScroll = () => {
+      if (window.scrollY > 40) nav.classList.add('is-solid');
+      else nav.classList.remove('is-solid');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fade-in on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Slider
+    const track = document.getElementById('track');
+    const dots = Array.from(document.querySelectorAll('#dots .dotbtn'));
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const total = dots.length;
+    let index = 0;
+    let timer = null;
+
+    function goTo(i){
+      index = (i + total) % total;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, idx) => d.classList.toggle('is-active', idx === index));
+      resetAuto();
+    }
+    dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+    prev.addEventListener('click', () => goTo(index - 1));
+    next.addEventListener('click', () => goTo(index + 1));
+
+    function resetAuto(){
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => goTo(index + 1), 6500);
+    }
+    resetAuto();
+
+    // Touch swipe (mobile)
+    let startX = null;
+    track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      if (startX === null) return;
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX;
+      if (Math.abs(dx) > 40){
+        if (dx < 0) goTo(index + 1);
+        else goTo(index - 1);
+      }
+      startX = null;
+    });
+
+    // CTA actions (edite para seu link real)
+    function openWhatsApp(e){
+      e.preventDefault();
+      // Troque o número abaixo pelo WhatsApp real (formato: 55DDDNUMERO)
+      const phone = '5500000000000';
+      const msg = encodeURIComponent('Olá! Quero agendar um atendimento e entender o melhor protocolo para mim.');
+      window.open(`https://wa.me/${phone}?text=${msg}`, '_blank', 'noopener');
+    }
+
+    function openScheduling(e){
+      e.preventDefault();
+      // Troque para seu link (Calendly, Doctoralia, etc.)
+      alert('Substitua esta ação pelo seu link de agendamento (Calendly/Doctoralia/WhatsApp).');
+    }
+
+    window.openWhatsApp = openWhatsApp;
+    window.openScheduling = openScheduling;
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>

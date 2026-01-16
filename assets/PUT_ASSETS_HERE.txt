@@ -1,0 +1,4 @@
+Coloque aqui seus arquivos:
+- hero.mp4 (vídeo do herói)
+- hero.jpg (poster/fallback)
+- logo.svg
