@@ -1,53 +1,38 @@
-# Landing Page — Clínica Premium (Emagrecimento & Saúde)
+# ISOS Clinic — Landing Page
 
-Projeto estático (HTML + CSS + JS) pronto para subir no GitHub.
+Landing page **estática** (HTML + CSS + JS) pronta para subir no GitHub.
 
 ## Estrutura
+- `index.html` — página única
+- `assets/` — imagens locais (inclui as fotos da doutora)
 
-- `index.html` — página completa
-- `assets/` — imagens e arquivos locais
-  - `hero-2560x900.(jpg|webp)` e `hero-1920x700.(jpg|webp)` — **hero (fundo)**
-  - `doctor-1536x1024.(jpg|webp)` — **foto da doutora**
-
-> As demais imagens (suplementos, genética, etc.) ainda estão via URLs externas (Unsplash) como *sample*.
-
-## Como publicar (sem terminal)
-
-### Opção A — GitHub Pages
-
-1. Crie um repositório no GitHub (ex.: `clinica-landing`).
-2. Abra o repositório → **Add file → Upload files**.
-3. Arraste **tudo** desta pasta (incluindo `index.html`, `assets/`, `README.md`) e clique em **Commit changes**.
-4. No repositório, vá em **Settings → Pages**.
-5. Em **Build and deployment**:
-   - Source: **Deploy from a branch**
-   - Branch: **main** / **root**
-6. Salve. O GitHub vai mostrar a URL do site.
-
-### Opção B — Netlify (upload manual)
-
-1. Acesse o Netlify.
-2. Em **Sites**, use **Add new site → Deploy manually**.
-3. Arraste a pasta do projeto (ou o `.zip`).
-
-## Personalização rápida
+## Ajustes rápidos
+Abra `index.html` e procure:
 
 ### 1) WhatsApp
-No `index.html`, procure por:
+Troque o número em:
+```js
+const phone = "5500000000000";
+```
 
-- `const phone = "5500000000000";`
+### 2) Link de agendamento
+Troque o link em:
+```js
+const schedulingUrl = "COLE_AQUI_SEU_LINK";
+```
 
-Troque para seu número (com DDI 55). Ex.: `5561999999999`.
+## Publicar sem terminal (GitHub Pages)
+1. Crie um repositório no GitHub.
+2. Clique em **Add file → Upload files**.
+3. Arraste todos os arquivos desta pasta e faça **Commit**.
+4. Vá em **Settings → Pages**.
+5. Em "Build and deployment", selecione:
+   - Source: **Deploy from a branch**
+   - Branch: **main**
+   - Folder: **/ (root)**
+6. Aguarde o link aparecer em Pages.
 
-### 2) Agendamento
-Procure por `openScheduling()` e substitua o `alert()` pelo seu link (Calendly/Doctoralia/etc.).
-
-### 3) Textos, nome da clínica e rodapé
-Troque:
-- Nome e slogan no topo
-- Seção “A Doutora” (bio e credenciais)
-- Endereço/telefone/e-mail no rodapé
-
-### 4) Imagens externas (opcional)
-Se quiser deixar 100% institucional, substitua as imagens externas dos blocos por arquivos em `assets/` e troque os `src` no `index.html`.
-
+## Observação sobre o vídeo do Hero
+O Hero usa um vídeo hospedado externamente. Se você preferir um vídeo local:
+- Coloque `assets/hero.mp4`
+- Troque o `src` do `<source>` no `index.html`.

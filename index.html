@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Clínica Premium — Emagrecimento & Saúde</title>
-  <meta name="description" content="Emagrecimento com ciência, exclusividade e acompanhamento personalizado. Agende um atendimento." />
+  <title>ISOS Clinic — Saúde & Emagrecimento</title>
+  <meta name="description" content="ISOS Clinic: saúde, emagrecimento e acompanhamento em diabetes com rigor clínico, ciência e acompanhamento personalizado." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,291 +12,608 @@
 
   <style>
     :root{
-      --bg:#ffffff;
-      --bg-soft:#f4f5f7;
-      --text:#0c0d10;
-      --muted:rgba(12,13,16,.70);
-      --line:rgba(12,13,16,.10);
+      --bg: #ffffff;
+      --bg-soft: #f4f5f7;
+      --text: #0c0d10;
+      --muted: rgba(12,13,16,.70);
+      --line: rgba(12,13,16,.10);
 
-      --accent:#5b2bff;     /* roxo */
-      --accent-2:#bfe6d6;   /* verde pastel */
-      --dark:#0b0c10;
+      --accent: #5b2bff;      /* roxo */
+      --accent-2: #bfe6d6;    /* verde pastel */
+      --dark: #0b0c10;
 
-      --shadow:0 10px 30px rgba(0,0,0,.10);
-      --radius:18px;
-      --radius-lg:28px;
-      --container:1180px;
+      --shadow: 0 10px 30px rgba(0,0,0,.10);
+      --radius: 18px;
+      --radius-lg: 28px;
 
-      --h1:clamp(2.2rem,4.2vw,4.4rem);
-      --h2:clamp(1.3rem,2.2vw,2.1rem);
-      --p:1.02rem;
-      --ls-wide:.18em;
+      --container: 1180px;
+
+      --h1: clamp(2.1rem, 4.2vw, 4.2rem);
+      --h2: clamp(1.25rem, 2.2vw, 2.0rem);
+      --h3: 1.05rem;
+      --p: 1.02rem;
+      --small: .88rem;
+
+      --ls-tight: .06em;
+      --ls-wide: .18em;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body{
       margin:0;
-      font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
+      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    a{color:inherit;text-decoration:none}
-    button{font-family:inherit}
 
-    .container{width:min(var(--container),calc(100% - 48px));margin:0 auto}
-    .section{padding:92px 0}
-    .section--soft{background:var(--bg-soft)}
+    a{ color: inherit; text-decoration: none; }
+    button{ font-family: inherit; }
 
-    /* NAV */
+    .container{
+      width: min(var(--container), calc(100% - 48px));
+      margin: 0 auto;
+    }
+    .section{ padding: 92px 0; }
+    .section--soft{ background: var(--bg-soft); }
+
+    /* Nav */
     .nav{
-      position:fixed;inset:0 0 auto 0;z-index:50;
-      padding:18px 0;
-      transition:background .25s ease,box-shadow .25s ease,padding .25s ease;
-      background:linear-gradient(to bottom,rgba(0,0,0,.52),rgba(0,0,0,0));
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 18px 0;
+      transition: background .25s ease, box-shadow .25s ease, padding .25s ease;
+      background: linear-gradient(to bottom, rgba(0,0,0,.50), rgba(0,0,0,0));
     }
     .nav.is-solid{
-      background:rgba(255,255,255,.86);
-      backdrop-filter:blur(12px);
-      box-shadow:0 1px 0 var(--line);
-      padding:12px 0;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--line);
+      padding: 12px 0;
     }
-    .nav__row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .nav__row{ display:flex; align-items:center; justify-content: space-between; gap: 16px; }
 
-    .brand{display:flex;align-items:center;gap:10px;color:#fff;transition:color .25s ease}
-    .nav.is-solid .brand{color:var(--text)}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      color: #fff;
+      transition: color .25s ease;
+    }
+    .nav.is-solid .brand{ color: var(--text); }
 
+    /* Monochrome mark */
     .brand__mark{
-      width:36px;height:36px;border-radius:12px;
-      background:
-        radial-gradient(circle at 30% 30%,rgba(255,255,255,.55),rgba(255,255,255,0)),
-        linear-gradient(135deg,rgba(91,43,255,.92),rgba(91,43,255,.35));
-      box-shadow:0 10px 30px rgba(91,43,255,.25);
-      position:relative;overflow:hidden;
+      width: 38px; height: 38px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.10);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
     }
-    .brand__mark::after{
-      content:"";position:absolute;inset:-40% -40%;
-      background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);
-      transform:rotate(12deg);
-      animation:sheen 3.6s ease-in-out infinite;
-      opacity:.8;
+    .nav.is-solid .brand__mark{
+      border-color: rgba(12,13,16,.14);
+      background: rgba(12,13,16,.03);
     }
-    @keyframes sheen{
-      0%,65%{transform:translateX(-30%) rotate(12deg);opacity:0}
-      75%{opacity:.9}
-      100%{transform:translateX(30%) rotate(12deg);opacity:0}
+    .brand__name{
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .92rem;
+      line-height: 1;
+    }
+    .brand__sub{
+      display:block;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      opacity: .78;
+      margin-top: 5px;
     }
 
-    .brand__name{font-weight:600;letter-spacing:.10em;text-transform:uppercase;font-size:.92rem;line-height:1}
-    .brand__sub{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;opacity:.78;margin-top:4px}
-
-    .nav__links{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.92);transition:color .25s ease}
-    .nav.is-solid .nav__links{color:rgba(12,13,16,.78)}
+    .nav__links{
+      display:flex;
+      align-items:center;
+      gap: 22px;
+      color: rgba(255,255,255,.92);
+      transition: color .25s ease;
+    }
+    .nav.is-solid .nav__links{ color: rgba(12,13,16,.78); }
     .nav__links a{
-      font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
-      opacity:.9;position:relative;padding:10px 0;
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: .9;
+      position: relative;
+      padding: 10px 0;
     }
     .nav__links a::after{
-      content:"";position:absolute;left:0;right:0;bottom:6px;height:1px;background:currentColor;
-      transform:scaleX(0);transform-origin:left;transition:transform .25s ease;opacity:.35;
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:6px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+      opacity:.35;
     }
-    .nav__links a:hover::after{transform:scaleX(1)}
+    .nav__links a:hover::after{ transform: scaleX(1); }
 
-    .nav__cta{display:flex;align-items:center;gap:10px}
+    .nav__cta{ display:flex; align-items:center; gap: 10px; }
 
     /* Buttons */
     .btn{
-      border:0;border-radius:999px;padding:12px 18px;
-      font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
-      cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,background .2s ease,color .2s ease,border-color .2s ease;
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;user-select:none;white-space:nowrap;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: .86rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      user-select: none;
+      white-space: nowrap;
     }
-    .btn:active{transform:translateY(1px)}
+    .btn:active{ transform: translateY(1px); }
 
     .btn--primary{
-      background:rgba(255,255,255,.94);color:var(--text);
-      box-shadow:0 12px 30px rgba(0,0,0,.18);
+      background: rgba(255,255,255,.94);
+      color: var(--text);
+      box-shadow: 0 12px 30px rgba(0,0,0,.18);
     }
-    .nav.is-solid .btn--primary{background:var(--text);color:#fff;box-shadow:0 12px 26px rgba(12,13,16,.18)}
-    .btn--primary:hover{transform:translateY(-1px);box-shadow:0 18px 42px rgba(0,0,0,.20)}
-
-    .btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
-    .nav.is-solid .btn--ghost{color:var(--text);border-color:rgba(12,13,16,.18)}
-    .btn--ghost:hover{background:rgba(255,255,255,.12)}
-    .nav.is-solid .btn--ghost:hover{background:rgba(12,13,16,.06)}
-
-    .btn--secondary{background:var(--accent-2);color:var(--text);box-shadow:0 12px 30px rgba(191,230,214,.45)}
-    .btn--secondary:hover{transform:translateY(-1px);box-shadow:0 16px 40px rgba(191,230,214,.55)}
-
-    /* HERO */
-    .hero{position:relative;min-height:100vh;display:flex;align-items:stretch;overflow:hidden;background:#0b0c10}
-    .hero__media{position:absolute;inset:0;z-index:0}
-    .hero__media img,
-    .hero__media video{
-      width:100%;height:100%;object-fit:cover;
-      filter:saturate(.92) contrast(1.05) brightness(.78);
-      transform:scale(1.03);
-      will-change:transform;
+    .nav.is-solid .btn--primary{
+      background: var(--text);
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(12,13,16,.18);
     }
-    .hero__media img{animation:kenburns 16s ease-in-out infinite alternate}
-    @keyframes kenburns{from{transform:scale(1.03) translateY(0)}to{transform:scale(1.09) translateY(-1.2%)} }
+    .btn--primary:hover{ transform: translateY(-1px); box-shadow: 0 18px 42px rgba(0,0,0,.20); }
+
+    .btn--ghost{
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.35);
+    }
+    .nav.is-solid .btn--ghost{
+      color: var(--text);
+      border-color: rgba(12,13,16,.18);
+    }
+    .btn--ghost:hover{ background: rgba(255,255,255,.12); }
+    .nav.is-solid .btn--ghost:hover{ background: rgba(12,13,16,.06); }
+
+    .btn--secondary{
+      background: var(--accent-2);
+      color: var(--text);
+      box-shadow: 0 12px 30px rgba(191,230,214,.45);
+    }
+    .btn--secondary:hover{ transform: translateY(-1px); box-shadow: 0 16px 40px rgba(191,230,214,.55); }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      min-height: 100vh;
+      display:flex;
+      align-items: stretch;
+      overflow:hidden;
+      background: #0b0c10;
+    }
+    .hero__media{ position:absolute; inset:0; z-index: 0; }
+    .hero__media video,
+    .hero__media img{
+      width:100%; height:100%; object-fit: cover;
+      filter: saturate(.95) contrast(1.08) brightness(.75);
+      transform: scale(1.04);
+    }
+    /* subtle motion */
+    .hero__media img{ animation: kenburns 18s ease-in-out infinite; }
+    @keyframes kenburns{
+      0%, 100%{ transform: scale(1.04) translate3d(0,0,0); }
+      50%{ transform: scale(1.10) translate3d(-1.5%, -1.5%, 0); }
+    }
 
     .hero__overlay{
-      position:absolute;inset:0;z-index:1;
+      position:absolute; inset:0; z-index: 1;
       background:
-        radial-gradient(70% 60% at 20% 30%,rgba(91,43,255,.24),rgba(0,0,0,0) 60%),
-        radial-gradient(60% 70% at 80% 20%,rgba(191,230,214,.14),rgba(0,0,0,0) 55%),
-        linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.62));
+        radial-gradient(70% 60% at 20% 30%, rgba(91,43,255,.18), rgba(0,0,0,0) 60%),
+        radial-gradient(60% 70% at 80% 20%, rgba(191,230,214,.12), rgba(0,0,0,0) 55%),
+        linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.66));
     }
-    .hero__content{position:relative;z-index:2;width:100%;display:flex;align-items:center;padding-top:92px;padding-bottom:56px}
-    .hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
+    .hero__content{
+      position: relative; z-index: 2;
+      width: 100%;
+      display:flex; align-items:center;
+      padding-top: 92px;
+      padding-bottom: 56px;
+    }
+    .hero__grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 48px;
+      align-items: end;
+    }
 
-    .kicker{color:rgba(255,255,255,.82);font-size:.80rem;letter-spacing:var(--ls-wide);text-transform:uppercase;margin:0 0 12px 0}
-    .hero__title{margin:0;color:#fff;font-size:var(--h1);line-height:1.02;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
-    .hero__title span{display:inline-block;color:rgba(255,255,255,.92)}
-    .hero__year{margin-top:14px;display:flex;align-items:baseline;gap:14px;color:rgba(255,255,255,.78);letter-spacing:.20em;text-transform:uppercase;font-size:.86rem}
-    .hero__year b{color:rgba(255,255,255,.95);font-weight:600;letter-spacing:.22em}
-    .hero__desc{margin:22px 0 0;color:rgba(255,255,255,.78);font-size:1.05rem;line-height:1.7;max-width:56ch;font-weight:300}
-    .hero__actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+    .kicker{
+      color: rgba(255,255,255,.82);
+      font-size: .80rem;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      margin: 0 0 12px 0;
+    }
+    .hero__title{
+      margin: 0;
+      color: #fff;
+      font-size: var(--h1);
+      line-height: 1.02;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .hero__desc{
+      margin: 22px 0 0 0;
+      color: rgba(255,255,255,.78);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 58ch;
+      font-weight: 300;
+    }
+    .hero__actions{ margin-top: 28px; display:flex; gap: 12px; flex-wrap: wrap; }
 
     .hero__card{
-      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-      border-radius:var(--radius-lg);padding:22px;backdrop-filter:blur(10px);
-      box-shadow:0 30px 80px rgba(0,0,0,.35);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-lg);
+      padding: 22px 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
     }
-    .hero__card h3{margin:0 0 10px;color:rgba(255,255,255,.92);font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
-    .hero__card p{margin:0;color:rgba(255,255,255,.72);font-size:.95rem;line-height:1.65;font-weight:300}
-    .hero__stats{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .stat{border-radius:16px;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.10);padding:12px 14px}
-    .stat b{display:block;color:rgba(255,255,255,.94);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.84rem}
-    .stat span{display:block;margin-top:6px;color:rgba(255,255,255,.68);font-size:.82rem;letter-spacing:.06em;line-height:1.3}
+    .hero__card h3{
+      margin: 0 0 10px 0;
+      color: rgba(255,255,255,.92);
+      font-size: .92rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .hero__card p{
+      margin: 0;
+      color: rgba(255,255,255,.72);
+      font-size: .95rem;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .hero__stats{ margin-top: 18px; display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat{
+      border-radius: 16px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 12px 14px;
+    }
+    .stat b{
+      display:block;
+      color: rgba(255,255,255,.94);
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .82rem;
+    }
+    .stat span{
+      display:block;
+      margin-top: 6px;
+      color: rgba(255,255,255,.68);
+      font-size: .82rem;
+      letter-spacing: .06em;
+      line-height: 1.3;
+      font-weight: 300;
+    }
 
-    .scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.72);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:10px;opacity:.9}
-    .scroll-hint .dot{width:10px;height:10px;border-radius:99px;background:rgba(255,255,255,.45);position:relative}
-    .scroll-hint .dot::after{content:"";position:absolute;inset:-8px;border-radius:999px;border:1px solid rgba(255,255,255,.22);animation:pulse 1.6s ease-in-out infinite}
-    @keyframes pulse{0%{transform:scale(.9);opacity:.3}60%{transform:scale(1.2);opacity:.2}100%{transform:scale(1.35);opacity:0}}
+    .scroll-hint{
+      position:absolute;
+      left:50%; bottom: 22px;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,.72);
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      opacity: .9;
+    }
+    .scroll-hint .dot{
+      width: 10px; height: 10px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.45);
+      position: relative;
+    }
+    .scroll-hint .dot::after{
+      content:"";
+      position:absolute;
+      inset: -8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.22);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%{ transform: scale(.9); opacity:.3; }
+      60%{ transform: scale(1.2); opacity:.2; }
+      100%{ transform: scale(1.35); opacity:0; }
+    }
 
     /* Headings */
-    .heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:40px;border-bottom:1px solid var(--line);padding-bottom:18px}
-    .heading__title{margin:0;font-size:var(--h2);letter-spacing:var(--ls-wide);text-transform:uppercase;font-weight:600;color:var(--text)}
-    .heading__subtitle{margin:0;max-width:60ch;color:var(--muted);font-weight:300;line-height:1.7;font-size:1rem}
+    .heading{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+    }
+    .heading__title{
+      margin: 0;
+      font-size: var(--h2);
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .heading__subtitle{
+      margin: 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
 
-    /* 2-col blocks */
-    .alt{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;margin:34px 0;padding:26px 0;border-bottom:1px solid var(--line)}
-    .alt:last-child{border-bottom:0}
-    .alt--reverse .alt__media{order:2}
-    .alt--reverse .alt__content{order:1}
+    /* Professional section */
+    .pro-grid{
+      display:grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 34px;
+      align-items: center;
+    }
+    .pro-media{
+      border-radius: var(--radius-lg);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,.06);
+      background: #ddd;
+      min-height: 420px;
+    }
+    .pro-media img{ width:100%; height:100%; object-fit: cover; display:block; }
+    .pro-card{
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0,0,0,.06);
+      background: #fff;
+      box-shadow: 0 14px 50px rgba(0,0,0,.08);
+      padding: 28px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(91,43,255,.18);
+      background: rgba(91,43,255,.05);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: .72rem;
+      font-weight: 700;
+      color: rgba(12,13,16,.86);
+    }
+    .pill i{ width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(91,43,255,.14); }
+    .pro-card h3{
+      margin: 16px 0 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+    .pro-card p{ margin: 0 0 16px; color: var(--muted); line-height: 1.85; font-weight: 300; font-size: var(--p); }
+    .pro-highlights{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .hl{
+      border-radius: 16px;
+      padding: 12px 14px;
+      border: 1px solid rgba(0,0,0,.07);
+      background: rgba(244,245,247,.70);
+    }
+    .hl b{ display:block; font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 800; }
+    .hl span{ display:block; margin-top: 6px; color: var(--muted); font-weight: 300; font-size: .92rem; line-height: 1.45; }
 
-    .alt__media{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06);background:#ddd;min-height:360px;position:relative}
-    .alt__media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01);transition:transform .6s ease}
-    .alt__media:hover img{transform:scale(1.06)}
+    /* Programs */
+    .programs{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .program{
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 12px 40px rgba(0,0,0,.07);
+      overflow:hidden;
+      transition: transform .18s ease, box-shadow .22s ease;
+      padding: 22px;
+      display:flex;
+      flex-direction: column;
+      min-height: 260px;
+    }
+    .program:hover{ transform: translateY(-3px); box-shadow: 0 18px 55px rgba(0,0,0,.10); }
+    .program .tag{
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: rgba(91,43,255,.92);
+    }
+    .program h4{
+      margin: 14px 0 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: .98rem;
+      line-height: 1.3;
+    }
+    .program p{ margin: 0; color: var(--muted); font-weight: 300; line-height: 1.8; }
+    .program .meta{ margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); display:flex; justify-content: space-between; align-items:center; gap: 12px; }
+    .program .meta a{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: .74rem;
+      color: rgba(12,13,16,.82);
+      font-weight: 800;
+      opacity: .92;
+    }
+    .program .meta a .arrow{
+      width: 28px; height: 28px; border-radius: 999px;
+      border: 1px solid rgba(12,13,16,.12);
+      background: rgba(12,13,16,.03);
+      display:grid; place-items:center;
+      transition: transform .18s ease;
+    }
+    .program:hover .meta a .arrow{ transform: translateX(2px); }
 
-    .alt__badge{position:absolute;left:18px;top:18px;padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.06);letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;font-weight:600;display:inline-flex;align-items:center;gap:10px}
-    .alt__badge i{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 4px rgba(91,43,255,.16)}
+    .programs-cta{ margin-top: 18px; display:flex; gap: 12px; flex-wrap: wrap; }
 
-    .alt__content h3{margin:0 0 12px;letter-spacing:.18em;text-transform:uppercase;font-size:1.05rem;font-weight:700;color:var(--text)}
-    .alt__content p{margin:0 0 18px;color:var(--muted);line-height:1.8;font-weight:300;font-size:var(--p)}
-
-    .alt__points{display:grid;gap:10px;margin-top:10px}
-    .point{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:16px;background:rgba(91,43,255,.04);border:1px solid rgba(91,43,255,.12)}
-    .point .tick{width:18px;height:18px;border-radius:6px;background:rgba(91,43,255,.14);border:1px solid rgba(91,43,255,.22);display:flex;align-items:center;justify-content:center;margin-top:2px;flex:0 0 auto}
-    .point .tick::before{content:"";width:8px;height:8px;border-radius:3px;background:var(--accent)}
-    .point b{display:block;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
-    .point span{display:block;margin-top:4px;font-size:.92rem;color:var(--muted);line-height:1.5;font-weight:300}
-
-    /* Results */
-    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
-    .result-card{background:#fff;border-radius:var(--radius-lg);border:1px solid rgba(0,0,0,.06);overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.08);transition:transform .18s ease,box-shadow .22s ease}
-    .result-card:hover{transform:translateY(-3px);box-shadow:0 18px 55px rgba(0,0,0,.10)}
-    .result-card__img{height:240px;overflow:hidden;background:#ddd}
-    .result-card__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.92);transform:scale(1.02);transition:transform .6s ease;display:block}
-    .result-card:hover .result-card__img img{transform:scale(1.07)}
-    .result-card__body{padding:18px 18px 20px}
-    .result-card__name{margin:0;letter-spacing:.18em;text-transform:uppercase;font-size:.90rem;font-weight:700}
-    .result-card__desc{margin:10px 0 14px;color:var(--muted);font-weight:300;line-height:1.6;font-size:.98rem}
-    .result-card__link{display:inline-flex;align-items:center;gap:10px;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;color:rgba(91,43,255,.92);font-weight:600}
-    .result-card__link .arrow{width:28px;height:28px;border-radius:999px;background:rgba(91,43,255,.10);display:flex;align-items:center;justify-content:center;border:1px solid rgba(91,43,255,.18);transition:transform .18s ease}
-    .result-card:hover .result-card__link .arrow{transform:translateX(2px)}
-
-    /* Slider */
-    .slider{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(0,0,0,.06);background:#fff;box-shadow:0 16px 52px rgba(0,0,0,.08)}
-    .slider__track{display:flex;transition:transform .5s cubic-bezier(.2,.7,.2,1);will-change:transform}
-    .slide{min-width:100%;padding:34px 34px 30px;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center}
-    .quote{margin:0;font-size:1.02rem;line-height:1.85;font-weight:300;color:rgba(12,13,16,.78)}
-    .quote strong{font-weight:600;color:rgba(12,13,16,.92)}
-    .meta{border-left:1px solid var(--line);padding-left:22px}
-    .stars{display:flex;gap:6px;margin-bottom:12px}
-    .star{width:16px;height:16px;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);background:rgba(91,43,255,.92);filter:drop-shadow(0 6px 10px rgba(91,43,255,.18))}
-    .meta__who{margin:0;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-size:.92rem}
-    .meta__src{margin:10px 0 0;color:var(--muted);font-weight:300;line-height:1.6;font-size:.95rem}
-    .slider__controls{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(244,245,247,.75);border-top:1px solid var(--line)}
-    .dots{display:flex;gap:8px;align-items:center}
-    .dotbtn{width:8px;height:8px;border-radius:999px;border:0;background:rgba(12,13,16,.22);cursor:pointer;transition:transform .18s ease,background .18s ease}
-    .dotbtn.is-active{background:rgba(91,43,255,.92);transform:scale(1.4)}
-    .slider__arrows{display:flex;gap:10px}
-    .iconbtn{width:40px;height:40px;border-radius:999px;border:1px solid rgba(12,13,16,.14);background:#fff;cursor:pointer;transition:transform .16s ease,background .2s ease;display:flex;align-items:center;justify-content:center}
-    .iconbtn:hover{transform:translateY(-1px);background:rgba(12,13,16,.03)}
-    .iconbtn:active{transform:translateY(1px)}
+    /* Testimonials slider */
+    .slider{
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow:hidden;
+      border: 1px solid rgba(0,0,0,.06);
+      background: #fff;
+      box-shadow: 0 16px 52px rgba(0,0,0,.08);
+    }
+    .slider__track{ display:flex; transition: transform .5s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+    .slide{ min-width: 100%; padding: 34px 34px 30px; display:grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items:center; }
+    .quote{ margin:0; font-size: 1.02rem; line-height: 1.85; font-weight: 300; color: rgba(12,13,16,.78); }
+    .quote strong{ font-weight: 700; color: rgba(12,13,16,.92); }
+    .meta-col{ border-left: 1px solid var(--line); padding-left: 22px; }
+    .stars{ display:flex; gap: 6px; margin-bottom: 12px; }
+    .star{
+      width: 16px; height: 16px;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      background: rgba(91,43,255,.92);
+      filter: drop-shadow(0 6px 10px rgba(91,43,255,.18));
+    }
+    .meta-col__who{ margin: 0; letter-spacing: .18em; text-transform: uppercase; font-weight: 800; font-size: .92rem; }
+    .meta-col__src{ margin: 10px 0 0; color: var(--muted); font-weight: 300; line-height: 1.6; font-size: .95rem; }
+    .slider__controls{ display:flex; justify-content: space-between; align-items:center; padding: 12px 18px; background: rgba(244,245,247,.75); border-top: 1px solid var(--line); }
+    .dots{ display:flex; gap: 8px; align-items:center; }
+    .dotbtn{ width: 8px; height: 8px; border-radius: 999px; border: 0; background: rgba(12,13,16,.22); cursor: pointer; transition: transform .18s ease, background .18s ease; }
+    .dotbtn.is-active{ background: rgba(91,43,255,.92); transform: scale(1.4); }
+    .slider__arrows{ display:flex; gap: 10px; }
+    .iconbtn{ width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(12,13,16,.14); background: #fff; cursor: pointer; transition: transform .16s ease, background .2s ease; display:flex; align-items:center; justify-content:center; }
+    .iconbtn:hover{ transform: translateY(-1px); background: rgba(12,13,16,.03); }
+    .iconbtn:active{ transform: translateY(1px); }
 
     /* CTA band */
     .cta{
-      position:relative;overflow:hidden;border-radius:var(--radius-lg);border:1px solid rgba(0,0,0,.06);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0,0,0,.06);
       background:
-        radial-gradient(70% 60% at 30% 30%,rgba(91,43,255,.14),rgba(255,255,255,0) 60%),
-        radial-gradient(60% 70% at 80% 20%,rgba(191,230,214,.22),rgba(255,255,255,0) 55%),
-        linear-gradient(180deg,#ffffff,#fbfbfc);
-      box-shadow:0 18px 70px rgba(0,0,0,.08);
-      padding:44px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center;
+        radial-gradient(70% 60% at 30% 30%, rgba(91,43,255,.14), rgba(255,255,255,0) 60%),
+        radial-gradient(60% 70% at 80% 20%, rgba(191,230,214,.22), rgba(255,255,255,0) 55%),
+        linear-gradient(180deg, #ffffff, #fbfbfc);
+      box-shadow: 0 18px 70px rgba(0,0,0,.08);
+      padding: 44px 40px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:center;
     }
-    .cta h3{margin:0 0 10px;letter-spacing:.18em;text-transform:uppercase;font-size:1.15rem;font-weight:700}
-    .cta p{margin:0;color:var(--muted);font-weight:300;line-height:1.75;max-width:62ch}
-    .cta .cta__actions{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+    .cta h3{ margin: 0 0 10px 0; letter-spacing: .18em; text-transform: uppercase; font-size: 1.15rem; font-weight: 900; }
+    .cta p{ margin: 0; color: var(--muted); font-weight: 300; line-height: 1.75; max-width: 62ch; }
+    .cta .cta__actions{ display:flex; justify-content:flex-end; gap: 12px; flex-wrap: wrap; }
 
     /* Footer */
-    footer{background:var(--dark);color:rgba(255,255,255,.82);padding:56px 0 28px;border-top:1px solid rgba(255,255,255,.10)}
-    .footer__top{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.10)}
-    .footer__brand{display:flex;gap:14px;align-items:flex-start}
-    .footer__brand .brand__mark{width:44px;height:44px;border-radius:16px;box-shadow:0 18px 60px rgba(91,43,255,.22)}
-    .footer__brand h4{margin:0;font-size:.92rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.92)}
-    .footer__brand p{margin:10px 0 0;color:rgba(255,255,255,.68);font-weight:300;line-height:1.75;max-width:58ch;font-size:.95rem}
-    .footer__cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .footer__col h5{margin:0 0 12px;letter-spacing:.18em;text-transform:uppercase;font-size:.80rem;color:rgba(255,255,255,.86)}
-    .footer__col a,.footer__col span{display:block;color:rgba(255,255,255,.68);font-weight:300;line-height:1.9;font-size:.95rem}
-    .social{display:flex;gap:10px;margin-top:14px}
-    .social a{width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;transition:transform .16s ease,background .2s ease,border-color .2s ease}
-    .social a:hover{transform:translateY(-1px);background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.26)}
-    .footer__bottom{padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.55);font-size:.85rem}
-    .footer__bottom a{color:rgba(255,255,255,.65);margin-left:14px}
+    footer{
+      background: var(--dark);
+      color: rgba(255,255,255,.82);
+      padding: 56px 0 28px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .footer__top{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 30px;
+      align-items:start;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .footer__brand{ display:flex; gap: 14px; align-items:flex-start; }
+    .footer__brand .brand__mark{ width: 44px; height: 44px; border-radius: 16px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); }
+    .footer__brand h4{ margin: 0; font-size: .92rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 900; color: rgba(255,255,255,.92); }
+    .footer__brand p{ margin: 10px 0 0; color: rgba(255,255,255,.68); font-weight: 300; line-height: 1.75; max-width: 58ch; font-size: .95rem; }
+
+    .footer__cols{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .footer__col h5{ margin: 0 0 12px; letter-spacing: .18em; text-transform: uppercase; font-size: .80rem; color: rgba(255,255,255,.86); }
+    .footer__col a, .footer__col span{ display:block; color: rgba(255,255,255,.68); font-weight: 300; line-height: 1.9; font-size: .95rem; }
+
+    .social{ display:flex; gap: 10px; margin-top: 14px; }
+    .social a{ width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; transition: transform .16s ease, background .2s ease, border-color .2s ease; }
+    .social a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.26); }
+    .social svg{ width: 20px; height: 20px; fill: rgba(255,255,255,.88); }
+
+    .footer__bottom{ padding-top: 18px; display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap; gap: 12px; color: rgba(255,255,255,.55); font-size: .85rem; }
+    .footer__bottom a{ color: rgba(255,255,255,.65); margin-left: 14px; }
 
     /* WhatsApp floating */
-    .whatsapp{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:999px;border:0;cursor:pointer;box-shadow:0 18px 50px rgba(0,0,0,.28);background:linear-gradient(135deg,#25D366,#1fb85a);display:flex;align-items:center;justify-content:center;transition:transform .18s ease,box-shadow .2s ease}
-    .whatsapp:hover{transform:translateY(-2px);box-shadow:0 22px 60px rgba(0,0,0,.30)}
-    .whatsapp svg{width:26px;height:26px;fill:#fff}
+    .whatsapp{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 0 18px 50px rgba(0,0,0,.28);
+      background: linear-gradient(135deg, #25D366, #1fb85a);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition: transform .18s ease, box-shadow .2s ease;
+    }
+    .whatsapp:hover{ transform: translateY(-2px); box-shadow: 0 22px 60px rgba(0,0,0,.30); }
+    .whatsapp svg{ width: 26px; height: 26px; fill: #fff; }
 
     /* Fade-in */
-    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-    .reveal.is-visible{opacity:1;transform:translateY(0)}
+    .reveal{ opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.is-visible{ opacity: 1; transform: translateY(0); }
 
     /* Responsive */
-    @media (max-width:980px){
-      .hero__grid{grid-template-columns:1fr}
-      .nav__links{display:none}
-      .alt{grid-template-columns:1fr}
-      .alt--reverse .alt__media{order:0}
-      .slide{grid-template-columns:1fr}
-      .meta{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:18px}
-      .cta{grid-template-columns:1fr;padding:34px 24px}
-      .cta .cta__actions{justify-content:flex-start}
-      .footer__top{grid-template-columns:1fr}
+    @media (max-width: 980px){
+      .nav__links{ display:none; }
+      .hero__grid{ grid-template-columns: 1fr; }
+      .hero__stats{ grid-template-columns: 1fr; }
+      .pro-grid{ grid-template-columns: 1fr; }
+      .programs{ grid-template-columns: 1fr; }
+      .slide{ grid-template-columns: 1fr; }
+      .meta-col{ border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 18px; }
+      .cta{ grid-template-columns: 1fr; padding: 34px 24px; }
+      .cta .cta__actions{ justify-content:flex-start; }
+      .footer__top{ grid-template-columns: 1fr; }
     }
-    @media (max-width:760px){
-      .section{padding:72px 0}
-      .results-grid{grid-template-columns:1fr}
-      .hero__stats{grid-template-columns:1fr}
-      .alt__media{min-height:280px}
-      .heading{flex-direction:column;align-items:flex-start}
+    @media (max-width: 760px){
+      .section{ padding: 72px 0; }
+      .heading{ flex-direction: column; align-items:flex-start; }
+      .pro-highlights{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -307,24 +624,26 @@
     <div class="container">
       <div class="nav__row">
         <a class="brand" href="#top" aria-label="Início">
-          <div class="brand__mark" aria-hidden="true"></div>
+          <div class="brand__mark" aria-hidden="true">
+            <!-- Monochrome SVG mark -->
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2c2.9 0 5.3.9 7 2.7C20.8 6.5 21.7 8.9 21.7 12s-.9 5.5-2.7 7.3C17.3 21.1 14.9 22 12 22s-5.3-.9-7-2.7C3.2 17.5 2.3 15.1 2.3 12s.9-5.5 2.7-7.3C6.7 2.9 9.1 2 12 2Zm0 2c-2.3 0-4.2.7-5.5 2.1C5.2 7.5 4.6 9.5 4.6 12c0 2.5.6 4.5 1.9 5.9C7.8 19.3 9.7 20 12 20s4.2-.7 5.5-2.1c1.3-1.4 1.9-3.4 1.9-5.9 0-2.5-.6-4.5-1.9-5.9C16.2 4.7 14.3 4 12 4Zm-1.2 4.1h2.4v3.0h3.0v2.4h-3.0v3.0h-2.4v-3.0h-3.0v-2.4h3.0v-3.0Z"/>
+            </svg>
+          </div>
           <div>
-            <span class="brand__name">CLÍNICA</span>
-            <span class="brand__sub">Ciência • Exclusividade</span>
+            <span class="brand__name">ISOS Clinic</span>
+            <span class="brand__sub">Ciência • Acompanhamento</span>
           </div>
         </a>
 
         <nav class="nav__links" aria-label="Seções">
-          <a href="#doutora">A Doutora</a>
-          <a href="#metodo">Método</a>
-          <a href="#diferenciais">Diferenciais</a>
-          <a href="#resultados">Resultados</a>
+          <a href="#profissionais">Profissionais</a>
+          <a href="#programas">Programas</a>
           <a href="#depoimentos">Depoimentos</a>
-          <a href="#contato">Contato</a>
         </nav>
 
         <div class="nav__cta">
-          <a class="btn btn--ghost" href="#contato">Fale com a equipe</a>
+          <a class="btn btn--ghost" href="#programas">Programas</a>
           <a class="btn btn--primary" href="#contato">Agende um atendimento</a>
         </div>
       </div>
@@ -334,12 +653,18 @@
   <!-- HERO -->
   <main id="top" class="hero">
     <div class="hero__media" aria-hidden="true">
-      <!-- HERO: imagem da doutora (substitua aqui se quiser vídeo local em assets/hero.mp4) -->
-      <picture>
-        <source srcset="assets/hero-1920x700.webp 1920w, assets/hero-2560x900.webp 2560w" type="image/webp">
-        <source srcset="assets/hero-1920x700.jpg 1920w, assets/hero-2560x900.jpg 2560w" type="image/jpeg">
-        <img src="assets/hero-2560x900.jpg" alt="" loading="eager" fetchpriority="high">
-      </picture>
+      <!--
+        Header com video esportivo:
+        - Mantemos uma fonte remota (funciona em GitHub Pages).
+        - Se quiser local, coloque um MP4 em /assets/hero.mp4 e troque o src.
+      -->
+      <video autoplay muted loop playsinline poster="assets/hero-2560x900.jpg">
+        <!-- Exemplo (Coverr): corrida / fitness ao ar livre -->
+        <source src="https://cdn.coverr.co/videos/coverr-running-along-the-sidewalk-4rdqhektas/1080p.mp4" type="video/mp4">
+        <source src="https://cdn.coverr.co/videos/coverr-woman-running-on-a-treadmill-7072/1080p.mp4" type="video/mp4">
+      </video>
+      <!-- fallback imagem (caso o video não carregue) -->
+      <img src="assets/hero-2560x900.jpg" alt="" loading="eager" />
     </div>
     <div class="hero__overlay" aria-hidden="true"></div>
 
@@ -347,36 +672,32 @@
       <div class="container">
         <div class="hero__grid">
           <div>
-            <p class="kicker">Emagrecimento médico • Metabolismo • Saúde de longo prazo</p>
-            <h1 class="hero__title"><span>Emagrecimento</span> com ciência</h1>
-
-            <div class="hero__year">
-              <b>2026</b>
-              <span>Exclusividade, precisão e acompanhamento</span>
-            </div>
+            <p class="kicker">Exclusividade • Estratégia clínica avançada • Rotina sustentável</p>
+            <h1 class="hero__title">Saúde & Emagrecimento com precisão</h1>
 
             <p class="hero__desc">
-              Protocolos personalizados para emagrecimento e saúde metabólica — com avaliação clínica, nutrição estruturada e monitoramento de dados.
-              Um padrão premium de cuidado, sem atalhos.
+              Protocolos personalizados, decisões guiadas por dados e acompanhamento consistente.
+              A ISOS Clinic une endocrinologia avançada, performance metabólica e cuidado de longo prazo.
             </p>
 
             <div class="hero__actions">
               <a class="btn btn--primary" href="#contato">Agende um atendimento</a>
-              <a class="btn btn--secondary" href="#doutora">Conheça a doutora</a>
+              <a class="btn btn--secondary" href="#programas">Ver programas</a>
             </div>
           </div>
 
           <aside class="hero__card reveal">
-            <h3>Como trabalhamos</h3>
+            <h3>Padrão ISOS</h3>
             <p>
-              Diagnóstico completo, plano sob medida e ajustes contínuos. Acompanhamento próximo para manter evolução e segurança.
+              Uma abordagem premium: investigação, plano e ajustes objetivos.
+              Sem excessos — apenas método, clareza e consistência.
             </p>
 
             <div class="hero__stats">
-              <div class="stat"><b>Protocolo único</b><span>Feito para seu corpo e rotina</span></div>
-              <div class="stat"><b>Monitoramento</b><span>Métricas e ajustes semanais</span></div>
-              <div class="stat"><b>Nutrição 1:1</b><span>Plano executável e elegante</span></div>
-              <div class="stat"><b>Foco em saúde</b><span>Resultado sustentável</span></div>
+              <div class="stat"><b>Individualizado</b><span>Plano desenhado por objetivo</span></div>
+              <div class="stat"><b>Evidência</b><span>Conduta com base clínica</span></div>
+              <div class="stat"><b>Acompanhamento</b><span>Decisões por métricas</span></div>
+              <div class="stat"><b>Rotina real</b><span>Sustentável no longo prazo</span></div>
             </div>
           </aside>
         </div>
@@ -389,54 +710,36 @@
     </div>
   </main>
 
-  <!-- A DOUTORA -->
-  <section id="doutora" class="section">
+  <!-- PROFISSIONAIS -->
+  <section id="profissionais" class="section">
     <div class="container">
       <div class="heading reveal">
-        <h2 class="heading__title">A Doutora</h2>
+        <h2 class="heading__title">Profissionais</h2>
         <p class="heading__subtitle">
-          Atendimento com postura clínica e linguagem clara. O objetivo é resultado com segurança, previsibilidade e método.
+          Atendimento premium com foco em ciência e tomada de decisão objetiva.
+          Uma equipe que acompanha sua evolução como um projeto — com estratégia, precisão e consistência.
         </p>
       </div>
 
-      <div class="alt reveal">
-        <div class="alt__media">
-          <span class="alt__badge"><i></i> Médica</span>
-          <picture>
-            <source srcset="assets/doctor-1536x1024.webp" type="image/webp">
-            <source srcset="assets/doctor-1536x1024.jpg" type="image/jpeg">
-            <img src="assets/doctor-1536x1024.jpg" alt="Foto institucional da doutora" loading="lazy">
-          </picture>
+      <div class="pro-grid">
+        <div class="pro-media reveal">
+          <img src="assets/doctor-1536x1024.jpg" alt="Profissional da ISOS Clinic" loading="lazy" />
         </div>
-        <div class="alt__content">
-          <h3>Medicina baseada em evidências</h3>
+
+        <div class="pro-card reveal">
+          <span class="pill"><i></i> Endocrinologia • Metabolismo</span>
+          <h3>Medicina com estratégia e acompanhamento</h3>
           <p>
-            Um acompanhamento pensado para quem quer emagrecer com responsabilidade: avaliação detalhada, metas realistas, ajuste de estratégia e suporte contínuo.
-            Aqui, cada etapa tem motivo e métrica.
+            Na ISOS Clinic, o cuidado é personalizado desde a primeira conversa.
+            Investigamos o cenário clínico, alinhamos objetivos e construímos um plano que respeita sua rotina —
+            com ajustes ao longo do tempo conforme seu corpo responde.
           </p>
 
-          <div class="alt__points">
-            <div class="point">
-              <div class="tick" aria-hidden="true"></div>
-              <div>
-                <b>Foco metabólico</b>
-                <span>Saúde hormonal, sono, saciedade e composição corporal.</span>
-              </div>
-            </div>
-            <div class="point">
-              <div class="tick" aria-hidden="true"></div>
-              <div>
-                <b>Plano executável</b>
-                <span>Rotina simples, sustentável e compatível com vida real.</span>
-              </div>
-            </div>
-            <div class="point">
-              <div class="tick" aria-hidden="true"></div>
-              <div>
-                <b>Acompanhamento premium</b>
-                <span>Contato, revisões e ajustes com padrão alto de cuidado.</span>
-              </div>
-            </div>
+          <div class="pro-highlights">
+            <div class="hl"><b>Clareza clínica</b><span>Decisões baseadas em exames e sinais do corpo.</span></div>
+            <div class="hl"><b>Personalização real</b><span>Protocolos desenhados para o seu contexto.</span></div>
+            <div class="hl"><b>Qualidade de vida</b><span>Estratégia que cabe na rotina, sem radicalismo.</span></div>
+            <div class="hl"><b>Ajustes objetivos</b><span>Monitoramento e evolução com previsibilidade.</span></div>
           </div>
         </div>
       </div>
@@ -444,160 +747,57 @@
     </div>
   </section>
 
-  <!-- MÉTODO -->
-  <section id="metodo" class="section section--soft">
+  <!-- PROGRAMAS -->
+  <section id="programas" class="section section--soft">
     <div class="container">
       <div class="heading reveal">
-        <h2 class="heading__title">Método</h2>
+        <h2 class="heading__title">Programas</h2>
         <p class="heading__subtitle">
-          Uma experiência de alto padrão: diagnóstico, plano e acompanhamento. Minimalismo no design, rigor na execução.
+          Três frentes clínicas, um mesmo padrão: investigação, plano individualizado e acompanhamento próximo.
         </p>
       </div>
 
-      <div class="alt reveal">
-        <div class="alt__media">
-          <span class="alt__badge"><i></i> Avaliação clínica</span>
-          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1600&q=80" alt="Avaliação clínica em ambiente premium" loading="lazy" />
-        </div>
-        <div class="alt__content">
-          <h3>Diagnóstico completo e direcionado</h3>
+      <div class="programs">
+        <article class="program reveal">
+          <div class="tag">Programa</div>
+          <h4>Endocrinologia Avançada</h4>
           <p>
-            Começamos entendendo sua história, seus exames, seu metabolismo e sua rotina. Isso permite um plano que respeita o seu contexto — com decisões guiadas por dados.
+            Doenças raras e quadros de difícil abordagem, com investigação e estratégia clínica avançada.
           </p>
-          <div class="alt__points">
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Protocolo por fases</b><span>Estratégias ajustadas conforme seu progresso.</span></div></div>
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Ritual de acompanhamento</b><span>Check-ins, revisão de métricas e ajustes rápidos.</span></div></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DIFERENCIAIS -->
-  <section id="diferenciais" class="section">
-    <div class="container">
-      <div class="heading reveal">
-        <h2 class="heading__title">Diferenciais</h2>
-        <p class="heading__subtitle">
-          Ciência aplicada à prática: personalização, tecnologia e acompanhamento para acelerar resultados mantendo saúde e previsibilidade.
-        </p>
-      </div>
-
-      <div class="alt reveal">
-        <div class="alt__media">
-          <span class="alt__badge"><i></i> Teste genético</span>
-          <img src="https://images.unsplash.com/photo-1581092919540-1c1f1f0b9b1d?auto=format&fit=crop&w=1600&q=80" alt="Análise laboratorial e genética" loading="lazy" />
-        </div>
-        <div class="alt__content">
-          <h3>Teste genético e estratégia metabólica</h3>
-          <p>
-            Identifique predisposições e padrões relevantes para resposta alimentar, treino e sono. Usamos os dados para reduzir tentativa e erro e orientar decisões clínicas.
-          </p>
-          <div class="alt__points">
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Direcionamento</b><span>Decisões com base em perfil e evidência.</span></div></div>
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Personalização</b><span>Ajustes finos para rotina e objetivos.</span></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="alt alt--reverse reveal">
-        <div class="alt__media">
-          <span class="alt__badge"><i></i> Suplementos</span>
-          <img src="https://images.unsplash.com/photo-1615486364521-8d59c3f2a1d7?auto=format&fit=crop&w=1600&q=80" alt="Suplementos e frascos minimalistas" loading="lazy" />
-        </div>
-        <div class="alt__content">
-          <h3>Suplementação sob medida</h3>
-          <p>
-            Fórmulas e rotinas escolhidas com critério para apoiar energia, saciedade, composição corporal e recuperação — sempre com dosagem adequada e objetivo claro.
-          </p>
-          <div class="alt__points">
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Critério clínico</b><span>Seleção baseada em necessidade e exames.</span></div></div>
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Praticidade</b><span>Rotina simples, fácil de manter por meses.</span></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="alt reveal">
-        <div class="alt__media">
-          <span class="alt__badge"><i></i> Balança inteligente</span>
-          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600&q=80" alt="Dispositivo inteligente e métricas" loading="lazy" />
-        </div>
-        <div class="alt__content">
-          <h3>Métricas objetivas, ajustes rápidos</h3>
-          <p>
-            Peso isolado não conta a história inteira. Monitoramos tendência e sinais do corpo para ajustar o protocolo sem achismo — com previsibilidade e calma.
-          </p>
-          <div class="alt__points">
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Composição corporal</b><span>Foco em evolução real, não só no número.</span></div></div>
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Previsibilidade</b><span>Decisões guiadas por tendência, não por ansiedade.</span></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="alt alt--reverse reveal">
-        <div class="alt__media">
-          <span class="alt__badge"><i></i> Nutrição</span>
-          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1600&q=80" alt="Comida saudável em estética premium" loading="lazy" />
-        </div>
-        <div class="alt__content">
-          <h3>Acompanhamento nutricional premium</h3>
-          <p>
-            Plano alimentar com escolhas elegantes e executáveis. O objetivo é manter performance e bem-estar enquanto o corpo responde com clareza, sem restrições desnecessárias.
-          </p>
-          <div class="alt__points">
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Personalização</b><span>Preferências, rotina e objetivo no centro.</span></div></div>
-            <div class="point"><div class="tick" aria-hidden="true"></div><div><b>Acompanhamento</b><span>Ajustes frequentes para manter evolução.</span></div></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- RESULTADOS -->
-  <section id="resultados" class="section section--soft">
-    <div class="container">
-      <div class="heading reveal">
-        <h2 class="heading__title">Resultados / Clientes reais</h2>
-        <p class="heading__subtitle">
-          Histórias reais, com privacidade e respeito. A estética em preto-e-branco reforça o foco no que importa: consistência e transformação.
-        </p>
-      </div>
-
-      <div class="results-grid">
-        <article class="result-card reveal">
-          <div class="result-card__img">
-            <img src="https://images.unsplash.com/photo-1520975958225-ffcf83c6b201?auto=format&fit=crop&w=1400&q=80" alt="Cliente em preto-e-branco" loading="lazy" />
-          </div>
-          <div class="result-card__body">
-            <h3 class="result-card__name">Mariana S.</h3>
-            <p class="result-card__desc">“Eu perdi 25 kg.”</p>
-            <a class="result-card__link" href="#" aria-label="Ver o caso de Mariana S.">Ver o caso <span class="arrow" aria-hidden="true">→</span></a>
+          <div class="meta">
+            <a href="#contato" aria-label="Agendar Endocrinologia Avançada">Agendar <span class="arrow" aria-hidden="true">→</span></a>
+            <span style="font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(12,13,16,.55);">Alta complexidade</span>
           </div>
         </article>
 
-        <article class="result-card reveal">
-          <div class="result-card__img">
-            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=80" alt="Cliente em preto-e-branco" loading="lazy" />
-          </div>
-          <div class="result-card__body">
-            <h3 class="result-card__name">Ricardo A.</h3>
-            <p class="result-card__desc">“Eu reduzi 12% de gordura.”</p>
-            <a class="result-card__link" href="#" aria-label="Ver o caso de Ricardo A.">Ver o caso <span class="arrow" aria-hidden="true">→</span></a>
+        <article class="program reveal">
+          <div class="tag">Programa</div>
+          <h4>Saúde e Emagrecimento</h4>
+          <p>
+            Acompanhamento com medicação quando indicada, preservando qualidade de vida e rotina sustentável.
+          </p>
+          <div class="meta">
+            <a href="#contato" aria-label="Agendar Saúde e Emagrecimento">Agendar <span class="arrow" aria-hidden="true">→</span></a>
+            <span style="font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(12,13,16,.55);">Sustentável</span>
           </div>
         </article>
 
-        <article class="result-card reveal">
-          <div class="result-card__img">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=80" alt="Cliente em preto-e-branco" loading="lazy" />
-          </div>
-          <div class="result-card__body">
-            <h3 class="result-card__name">Camila R.</h3>
-            <p class="result-card__desc">“Eu emagreci e voltei a dormir bem.”</p>
-            <a class="result-card__link" href="#" aria-label="Ver o caso de Camila R.">Ver o caso <span class="arrow" aria-hidden="true">→</span></a>
+        <article class="program reveal">
+          <div class="tag">Programa</div>
+          <h4>Acompanhamento em Diabetes</h4>
+          <p>
+            Controle glicêmico, prevenção de complicações e ajustes objetivos ao longo do tempo.
+          </p>
+          <div class="meta">
+            <a href="#contato" aria-label="Agendar Acompanhamento em Diabetes">Agendar <span class="arrow" aria-hidden="true">→</span></a>
+            <span style="font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(12,13,16,.55);">Longo prazo</span>
           </div>
         </article>
+      </div>
+
+      <div class="programs-cta reveal">
+        <a class="btn btn--primary" href="#contato">Agende um atendimento</a>
+        <a class="btn btn--secondary" href="#" onclick="openPrograms(event)">Ver todos os programas</a>
       </div>
     </div>
   </section>
@@ -607,35 +807,52 @@
     <div class="container">
       <div class="heading reveal">
         <h2 class="heading__title">Depoimentos</h2>
-        <p class="heading__subtitle">Experiência premium e acompanhamento próximo. Um padrão de cuidado que você percebe nos detalhes.</p>
+        <p class="heading__subtitle">
+          Um padrão percebido nos detalhes: acolhimento, estratégia e acompanhamento.
+        </p>
       </div>
 
       <div class="slider reveal" aria-roledescription="carousel" aria-label="Depoimentos">
         <div class="slider__track" id="track">
           <div class="slide" role="group" aria-label="Depoimento 1 de 3">
-            <p class="quote">“Eu já tinha tentado de tudo. Aqui, pela primeira vez, senti <strong>um plano realmente meu</strong>: simples de executar, com ajustes rápidos e sem ansiedade.”</p>
-            <div class="meta">
-              <div class="stars" aria-label="5 de 5 estrelas"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
-              <p class="meta__who">Cliente • Programa Premium</p>
-              <p class="meta__src">“Atendimento impecável e acompanhamento de verdade.”</p>
+            <p class="quote">
+              “Eu tinha medo de começar e não conseguir manter. A ISOS montou um plano <strong>executável na minha rotina</strong> e fez ajustes rápidos.
+              Resultado: consistência e controle.”
+            </p>
+            <div class="meta-col">
+              <div class="stars" aria-label="5 de 5 estrelas">
+                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+              </div>
+              <p class="meta-col__who">Cliente • Saúde e Emagrecimento</p>
+              <p class="meta-col__src">“Clínica premium, com ciência e proximidade.”</p>
             </div>
           </div>
 
           <div class="slide" role="group" aria-label="Depoimento 2 de 3">
-            <p class="quote">“A diferença está no monitoramento. Em vez de esperar um mês para ajustar, a equipe acompanha as métricas e <strong>corrige a rota</strong>.”</p>
-            <div class="meta">
-              <div class="stars" aria-label="5 de 5 estrelas"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
-              <p class="meta__who">Cliente • Acompanhamento 1:1</p>
-              <p class="meta__src">Citação: “Sofisticação, ciência e proximidade.”</p>
+            <p class="quote">
+              “O diferencial foi o olhar clínico. Investigaram o que ninguém tinha visto e, pela primeira vez,
+              eu senti <strong>um caminho claro</strong> para evoluir.”
+            </p>
+            <div class="meta-col">
+              <div class="stars" aria-label="5 de 5 estrelas">
+                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+              </div>
+              <p class="meta-col__who">Cliente • Endocrinologia Avançada</p>
+              <p class="meta-col__src">Citação: “Precisão, investigação e estratégia.”</p>
             </div>
           </div>
 
           <div class="slide" role="group" aria-label="Depoimento 3 de 3">
-            <p class="quote">“O plano foi desenhado para minha rotina real. Sem exagero, sem promessa fácil — apenas método e consistência. Eu ganhei saúde e controle.”</p>
-            <div class="meta">
-              <div class="stars" aria-label="5 de 5 estrelas"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
-              <p class="meta__who">Cliente • Reeducação e Performance</p>
-              <p class="meta__src">Citação: “Elegante, objetivo e altamente eficaz.”</p>
+            <p class="quote">
+              “No diabetes, o acompanhamento muda tudo. Ajustes objetivos, prevenção e um plano de vida real.
+              Eu ganhei <strong>segurança e previsibilidade</strong>.”
+            </p>
+            <div class="meta-col">
+              <div class="stars" aria-label="5 de 5 estrelas">
+                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+              </div>
+              <p class="meta-col__who">Cliente • Acompanhamento em Diabetes</p>
+              <p class="meta-col__src">“Controle com consistência e cuidado.”</p>
             </div>
           </div>
         </div>
@@ -656,14 +873,14 @@
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CTA / CONTATO -->
   <section id="contato" class="section section--soft">
     <div class="container">
       <div class="cta reveal">
         <div>
           <h3>Agende um atendimento</h3>
           <p>
-            Uma conversa rápida para entender seu objetivo e indicar o melhor caminho.
+            Uma conversa objetiva para entender seu objetivo e indicar o melhor programa.
             Se fizer sentido, seguimos para avaliação e protocolo personalizado.
           </p>
         </div>
@@ -680,12 +897,16 @@
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <div class="brand__mark" aria-hidden="true"></div>
+          <div class="brand__mark" aria-hidden="true" style="color:#fff;">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2c2.9 0 5.3.9 7 2.7C20.8 6.5 21.7 8.9 21.7 12s-.9 5.5-2.7 7.3C17.3 21.1 14.9 22 12 22s-5.3-.9-7-2.7C3.2 17.5 2.3 15.1 2.3 12s.9-5.5 2.7-7.3C6.7 2.9 9.1 2 12 2Zm0 2c-2.3 0-4.2.7-5.5 2.1C5.2 7.5 4.6 9.5 4.6 12c0 2.5.6 4.5 1.9 5.9C7.8 19.3 9.7 20 12 20s4.2-.7 5.5-2.1c1.3-1.4 1.9-3.4 1.9-5.9 0-2.5-.6-4.5-1.9-5.9C16.2 4.7 14.3 4 12 4Zm-1.2 4.1h2.4v3.0h3.0v2.4h-3.0v3.0h-2.4v-3.0h-3.0v-2.4h3.0v-3.0Z"/>
+            </svg>
+          </div>
           <div>
-            <h4>CLÍNICA</h4>
+            <h4>ISOS Clinic</h4>
             <p>
-              Emagrecimento e saúde com ciência, estética premium e acompanhamento personalizado.
-              Protocolos sob medida, com clareza e consistência.
+              Saúde, emagrecimento e diabetes com ciência, estética premium e acompanhamento consistente.
+              Protocolos sob medida, com clareza e rotina sustentável.
             </p>
             <div class="social" aria-label="Redes sociais">
               <a href="#" aria-label="Instagram" title="Instagram">
@@ -706,7 +927,7 @@
             <h5>Contato</h5>
             <span>Endereço: Rua Exemplo, 123 • Bairro • Cidade/UF</span>
             <a href="tel:+550000000000">Telefone: (00) 0000-0000</a>
-            <a href="mailto:contato@clinica.com">E-mail: contato@clinica.com</a>
+            <a href="mailto:contato@isosclinic.com">E-mail: contato@isosclinic.com</a>
           </div>
           <div class="footer__col">
             <h5>Legal</h5>
@@ -718,7 +939,7 @@
       </div>
 
       <div class="footer__bottom">
-        <span>© <span id="year"></span> Clínica. Todos os direitos reservados.</span>
+        <span>© <span id="year"></span> ISOS Clinic. Todos os direitos reservados.</span>
         <span>
           <a href="#">Termos</a>
           <a href="#">Privacidade</a>
@@ -750,9 +971,7 @@
     // Fade-in on scroll
     const revealEls = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('is-visible');
-      });
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
     }, { threshold: 0.12 });
     revealEls.forEach(el => io.observe(el));
 
@@ -795,35 +1014,50 @@
       startX = null;
     });
 
-    // CTA actions (edite para seu link real)
+    // Actions
+    const schedulingUrl = "COLE_AQUI_SEU_LINK_DE_AGENDAMENTO"; // Calendly, Doctoralia, etc.
+
     function openWhatsApp(e){
       e.preventDefault();
-      // Troque o número abaixo pelo WhatsApp real (formato: 55DDDNUMERO)
-      const phone = '5500000000000';
-      const msg = encodeURIComponent('Olá! Quero agendar um atendimento e entender o melhor protocolo para mim.');
-      window.open(`https://wa.me/${phone}?text=${msg}`, '_blank', 'noopener');
+      const phone = "5500000000000"; // troque aqui
+      const msg = encodeURIComponent("Olá! Quero agendar um atendimento na ISOS Clinic e entender o melhor programa para mim.");
+      window.open(`https://wa.me/${phone}?text=${msg}`, "_blank", "noopener");
     }
-
     function openScheduling(e){
       e.preventDefault();
-      // Troque para seu link (Calendly, Doctoralia, etc.)
-      alert('Substitua esta ação pelo seu link de agendamento (Calendly/Doctoralia/WhatsApp).');
+      if (!schedulingUrl || schedulingUrl.includes("COLE_AQUI")){
+        alert("Substitua schedulingUrl por seu link de agendamento (Calendly/Doctoralia/etc.).");
+        return;
+      }
+      window.open(schedulingUrl, "_blank", "noopener");
     }
-
+    function openPrograms(e){
+      e.preventDefault();
+      // Se você tiver uma página /programas, troque para: window.location.href = 'programas.html'
+      alert("Se você quiser, eu também monto a página 'Programas' completa (com detalhes e CTA por programa).")
+    }
     window.openWhatsApp = openWhatsApp;
     window.openScheduling = openScheduling;
+    window.openPrograms = openPrograms;
 
-    // Smooth anchor scrolling
+    // Smooth anchors
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
         const href = a.getAttribute('href');
-        if (!href || href === '#') return;
+        if (!href || href === "#") return;
         const target = document.querySelector(href);
         if (!target) return;
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+
+    // Prefer video: hide image fallback if video can play
+    const v = document.querySelector('.hero__media video');
+    const imgFallback = document.querySelector('.hero__media img');
+    if (v && imgFallback){
+      v.addEventListener('canplay', () => { imgFallback.style.display = 'none'; }, { once: true });
+    }
   </script>
 </body>
 </html>
